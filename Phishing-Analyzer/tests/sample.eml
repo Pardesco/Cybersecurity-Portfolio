@@ -1,0 +1,19 @@
+From: IT Support Team <admin@paypal-security-update-alert.com>
+To: victim@example.com
+Reply-To: hacker-returns@gmail.com
+Subject: URGENT: Your account has been limited
+Date: Wed, 1 Apr 2026 10:00:00 -0400
+Authentication-Results: mx.google.com; spf=fail (google.com: domain of admin@paypal-security-update-alert.com does not designate 203.0.113.50 as permitted sender)
+Received: from unknown (HELO malicious.server.com) (203.0.113.50)
+
+Dear Customer,
+
+Your account has been restricted due to suspicious login attempts.
+Please verify your identity immediately by clicking the secure link below:
+
+http://paypal-security-update-alert.com/login-verification
+
+Failure to verify within 24 hours will result in permanent suspension.
+
+Regards,
+IT Support Team

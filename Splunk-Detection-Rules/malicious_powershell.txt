@@ -1,0 +1,24 @@
+# Detection Rule: Malicious PowerShell
+
+## Overview
+Detects the execution of PowerShell with suspicious command-line arguments, specifically focusing on encoded commands (`-enc`, `-EncodedCommand`), hidden windows (`-WindowStyle Hidden`), and execution policy bypasses (`-ep bypass`).
+
+## SPL Query
+```spl
+index=windows (source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1) OR (source="WinEventLog:Security" EventCode=4688)
+| search Image="*\\powershell.exe" OR Image="*\\pwsh.exe"
+| search CommandLine="*-enc*" OR CommandLine="*-EncodedCommand*" OR CommandLine="*-WindowStyle hidden*" OR CommandLine="*-ep bypass*" OR CommandLine="*-ExecutionPolicy bypass*"
+| stats count by _time, host, User, CommandLine, ParentImage
+| rename host as Hostname, ParentImage as Spawned_By
+```
+
+## Relevant Event IDs
+- Sysmon Event ID **1**: Process creation.
+- Windows Security Event ID **4688**: A new process has been created. (Note: Requires Command Line auditing to be enabled via GPO).
+
+## Explanation
+Attackers heavily utilize PowerShell for living-off-the-land (LotL) techniques. To evade basic detection and logging, they often base64-encode their malicious scripts (using `-EncodedCommand` or its shorthand `-enc`) and attempt to hide the execution window. This query searches process creation logs for PowerShell executions containing these common evasion flags. 
+
+## Tuning & False Positives
+- **False Positives:** Many legitimate RMM (Remote Monitoring and Management) tools, software installers, and SCCM scripts use encoded commands and hidden windows to deploy software silently without interrupting the user.
+- **Tuning:** Exclude known good parent processes (e.g., `ParentImage!="*\\ccmexec.exe"`) and known administrative users. You may also need to decode the base64 commands from false positives to verify their benign nature and add them to an exclusion list based on hash or exact command line match.

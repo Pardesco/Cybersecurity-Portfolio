@@ -1,0 +1,27 @@
+# VirtualBox VM files
+*.vdi
+*.vbox
+*.vbox-prev
+*.ova
+*.ovf
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment Variables (NEVER COMMIT API KEYS)
+.env
+.env.local
+.env.*.local
+
+# Tool outputs / sensitive data
+reports/
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
