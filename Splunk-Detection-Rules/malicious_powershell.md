@@ -6,6 +6,7 @@ Detects the execution of PowerShell with suspicious command-line arguments, spec
 ## SPL Query
 ```spl
 index=windows (source="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1) OR (source="WinEventLog:Security" EventCode=4688)
+| eval Image=coalesce(Image, NewProcessName), ParentImage=coalesce(ParentImage, ParentProcessName)
 | search Image="*\\powershell.exe" OR Image="*\\pwsh.exe"
 | search CommandLine="*-enc*" OR CommandLine="*-EncodedCommand*" OR CommandLine="*-WindowStyle hidden*" OR CommandLine="*-ep bypass*" OR CommandLine="*-ExecutionPolicy bypass*"
 | stats count by _time, host, User, CommandLine, ParentImage

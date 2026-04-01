@@ -82,7 +82,7 @@ if (-not $ADInstalled) {
         @{Name="Admin Two"; Sam="admin2"; OU="IT"}
     )
 
-    $DefaultPassword = ConvertTo-SecureString "WelcomeToTheLab2026!" -AsPlainText -Force
+    $DefaultPassword = Read-Host -Prompt "Enter Default User Password" -AsSecureString
 
     Write-Host "[+] Creating 5 Standard Users..."
     foreach ($User in $StandardUsers) {
@@ -140,4 +140,5 @@ if (-not $ADInstalled) {
     }
 
     Write-Host "[!!!] Phase 2 Configuration Complete! The lab architecture is ready." -ForegroundColor Green
+}
 }

@@ -32,7 +32,8 @@ def analyze_wallet(address):
             spender_address = "0x" + raw_address[-40:]
             
             is_verified = get_contract_abi(spender_address)
-            is_phishing = phishing_db.is_flagged(spender_address)
+            # TODO: Integrate address-based threat intel (e.g., Forta) instead of domain-based MetaMask DB
+            is_phishing = False # phishing_db.is_flagged(spender_address)
             
             approvals.append({
                 "hash": tx["hash"],

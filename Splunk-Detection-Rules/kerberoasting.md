@@ -6,7 +6,7 @@ Detects potential Kerberoasting activity by looking for Service Ticket Grants (T
 ## SPL Query
 ```spl
 index=windows source="WinEventLog:Security" EventCode=4769 TicketOptions="0x40810000" TicketEncryptionType="0x17"
-| where TargetUserName!="*$"
+| where NOT match(TargetUserName, "\\$$")
 | stats count by _time, TargetUserName, IpAddress, ServiceName
 | rename TargetUserName as Requesting_User, IpAddress as Source_IP, ServiceName as Target_Service
 ```

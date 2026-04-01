@@ -12,7 +12,7 @@ This directory contains a Python script designed to assist in Web3 / Cryptocurre
 ## Setup & Running
 1. Copy `.env.example` to `.env`.
 2. Add your free Etherscan API key to `.env`.
-3. Run the Python script: `python crypto_ir_tool.py <wallet_address>` (Code coming soon for Days 5-6)
+3. Run the Python script: `python main.py <wallet_address>`
 
 ## Portfolio Value
 Demonstrates the ability to handle emerging threats (Web3 IR), interact with REST APIs, parse complex JSON data, correlate indicators of compromise (IoCs) against threat intelligence feeds, and output structured artifacts for incident response teams.

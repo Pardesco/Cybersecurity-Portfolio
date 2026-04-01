@@ -12,7 +12,7 @@ This directory contains a Python CLI tool that automates the triage and analysis
 ## Setup & Running
 1. Copy `.env.example` to `.env`.
 2. Add your free VirusTotal API key to `.env`.
-3. Run the Python CLI: `python phishing_analyzer.py path/to/email.eml` (Code coming soon for Days 7-8)
+3. Run the Python CLI: `python main.py path/to/email.eml`
 
 ## Portfolio Value
 Demonstrates practical SOC analyst skills: email header analysis, IOC extraction, interaction with threat intelligence platforms (VirusTotal), scripting automation, and alert triage.
