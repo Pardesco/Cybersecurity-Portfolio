@@ -4,7 +4,7 @@ import os
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from analyzer import analyze_email, print_report
+from phish_analyzer import analyze_email, print_report
 
 def run_test():
     """Runs the analyzer against the sample .eml file."""

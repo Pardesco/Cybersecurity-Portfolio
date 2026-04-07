@@ -1,6 +1,6 @@
 import sys
 import argparse
-from analyzer import analyze_email, print_report
+from phish_analyzer import analyze_email, print_report
 
 def main():
     parser = argparse.ArgumentParser(description="Phishing Email Analysis Toolkit")

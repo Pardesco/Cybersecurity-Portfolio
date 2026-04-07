@@ -1,7 +1,7 @@
 import sys
 import argparse
 import os
-from analyzer import analyze_wallet
+from crypto_analyzer import analyze_wallet
 from reporter import generate_report
 
 def main():

@@ -1,0 +1,3 @@
+evtx==3.1.2
+morpheus-core==24.3.0 # Approximate version for dependency tracking
+tritonclient[all]==2.38.0

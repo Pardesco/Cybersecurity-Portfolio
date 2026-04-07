@@ -4,7 +4,7 @@ import os
 # Add parent directory to path so we can import our modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from analyzer import analyze_wallet
+from crypto_analyzer import analyze_wallet
 from reporter import generate_report
 
 def run_test():

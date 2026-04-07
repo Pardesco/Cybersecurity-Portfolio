@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  triton:
+    image: nvcr.io/nvidia/tritonserver:23.08-py3
+    container_name: morpheus-triton-server
+    ports:
+      - "8000:8000" # HTTP
+      - "8001:8001" # gRPC (Used by Morpheus)
+      - "8002:8002" # Metrics
+    command: ["tritonserver", "--model-repository=/models", "--strict-model-config=false", "--log-verbose=1"]
+    volumes:
+      - ./models:/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+              # Note: Requires NVIDIA Container Toolkit installed on Windows host via WSL2
